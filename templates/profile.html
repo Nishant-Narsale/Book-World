@@ -1,0 +1,20 @@
+{% extends 'layout.html' %}
+{% load static %}
+{% block title %}
+Book World | Profile
+{% endblock title %}
+{% block cssfilename %}
+<link rel="stylesheet" href="{% static 'css/ustyle.css' %}">
+<link rel="stylesheet" href="{% static 'css/profile.css' %}">
+{% endblock cssfilename %}
+{% block body %}
+<div class="ucontainer" style="display: flex; justify-content:center; align-items:center;">
+    <div class="ubox" style="height: 450px; margin-top:10px;">
+        <img class="uprofile" style="display: block; margin-left:95px; margin-right:95px; margin-top:10px; margin-bottom:10px;" src="{% static 'images/profile-icon.png' %}" alt="">
+        <h1 class="username" style="text-align: center; width:100%;"><span style="color: greenyellow;"> Username : </span>{{user.username}}</h1>
+        <h1 class="email" style="text-align: center; width:100%;"><span style="color: greenyellow;"> Email : </span>{{user.email}}</h1>
+        <h1 class="gender" style="text-align: center; width:100%;"><span style="color: greenyellow;"> Gender : </span>male</h1>
+    </div>
+</div>
+<br><br><br><br>
+{% endblock body %}
