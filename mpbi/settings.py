@@ -155,6 +155,10 @@ STATICFILES_DIRS = [
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'assets')
 
+STATICFILES_STORAGE='whitenoise.django.GzipManifestStaticFilesStorage'
+
+WHITENOISE_USE_FINDERS=True
+
 MEDIA_URL = '/images/'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'static/images')
