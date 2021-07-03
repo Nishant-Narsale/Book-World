@@ -106,7 +106,8 @@ DATABASES = {
         'NAME': 'mpbi',
         'USER': 'postgres',
         'PASSWORD': 'Nishant@0510',
-        'HOST': 'localhost'
+        'HOST': 'localhost',
+        'PORT':'5432'
     }
 }
 
