@@ -1,0 +1,189 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" href="{% static 'css/ustyle.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <style>
+        .navbar{
+            height: 65px;
+            background-color: #4f868c!important;
+            position: -webkit-sticky;
+            position: sticky;
+            top: 0;
+            z-index: 1;
+        }
+
+        .dropdown .dropbtn {
+            font-size: 16px;  
+            border: none;
+            outline: none;
+            color: rgba(255, 255, 255, 0.425);
+            padding: 14px 16px;
+            background-color: inherit;
+            font-family: inherit;
+            margin: 0;
+        }
+        
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+        
+        .dropdown-content a {
+            float: none;
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            text-align: left;
+        }
+        .dropbtn:hover{
+            color: white;
+        }
+        .dropdown-content a:hover {
+            background-color: #ddd;
+        }
+        
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .dummy{
+            position: relative;
+            top: 5px;
+        }
+        
+    </style>
+    <script>
+        var user = "{{request.user}}"
+        function getToken(name) {
+            let cookieValue = null;
+            if (document.cookie && document.cookie !== '') {
+                const cookies = document.cookie.split(';');
+                for (let i = 0; i < cookies.length; i++) {
+                    const cookie = cookies[i].trim();
+                    // Does this cookie string begin with the name we want?
+                    if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                        break;
+                    }
+                }
+            }
+            return cookieValue;
+        }
+        const csrftoken = getToken('csrftoken');
+    </script>
+    <title>A BOOK WORLD</title>
+</head>
+<body>
+    <div class="uheader">
+        <div class="ucontainer">
+            <br>
+            
+                <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+                    <a class="navbar-brand" href="{% url 'main:index' %}">Book World</a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav mr-auto">
+                            <li class="nav-item active">
+                            <a class="nav-link dummy" href="{% url 'main:index' %}">Home <span class="sr-only">(current)</span></a>
+                            </li>
+                            
+                            <li class="nav-item dropdown">
+                            <div class="dropdown">
+                                <button class="dropbtn">Categories &#8595; 
+                                    <i class="fa fa-caret-down"></i>
+                                </button>
+                                <div class="dropdown-content">
+                                    <a href="{% url 'main:category' 'F.Y.Engineering' %}">F.Y.Engineering</a>
+                                    <a href="{% url 'main:category' 'S.Y.Engineering' %}">S.Y.Engineering</a>
+                                    <a href="{% url 'main:category' 'Horror' %}">Horror</a>
+                                    <a href="{% url 'main:category' 'Comic' %}">Comic</a>
+                                    <a href="{% url 'main:category' 'Science Fiction' %}">Science Fiction</a>
+                                    <a href="{% url 'main:category' 'other' %}">Other</a>
+                                </div>
+                            </div>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link dummy" href="{% url 'main:sellItem' %}">Sell </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link dummy" href="{% url 'main:about' %}">About</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="form-inline my-2 my-lg-0">
+                        {% if user_is_authenticated %}
+                        <a href="{% url 'accounts:logout' %}"class="btn btn-warning">Logout</a>
+                        {% else %}
+                        <a href="{% url 'accounts:login' %}"class="btn btn-warning">Login</a>
+                        {% endif %}
+                        <a href="{% url 'main:profile' %}">
+                            <img class="img img-fluid profile-image" src="{% static 'images/profile-icon.png' %}" alt="Profile">
+                        </a>
+
+                        <a href="{% url 'main:cart' %}">
+                            <img  id="cart-icon" src="{% static 'images/cart.png' %}">
+                        </a>
+                        <p id="cart-total">
+                            {% if user_is_authenticated %}
+                            {{order.total_cart_items}}
+                            {% else %}
+                            0
+                            {% endif %}
+                        </p>
+                    
+                    </div>
+                </nav>
+            <div class="container">
+                <div class="urow"></div>
+                <div class="ucol-2"></div>
+                <h1>A BOOK WORLD</h1>
+                <p>Ye Hai Hamari Apni Kitab Ki Duniya!</p>
+                <a href="#books"class="ubtn" id="ubtn" style="display: inline-block;background:rgb(212, 101, 10);color:#fff;padding:8px 30px;margin:30px 0px;border-radius:30px;">Explore now &#8594;</a>
+                <a href="{% url 'main:sellItem' %}" class="ubtn" id="ubtn" style="display: inline-block;background:rgb(212, 101, 10);color:#fff;padding:8px 30px;margin:30px 0px;border-radius:30px;">Sell Your Book</a>
+                <br><br>
+                <div class="ucol-2"></div>
+                <img src="{% static 'images/bookstore2.jpeg' %}" alt="">
+                
+                <br><br>
+                <div class="row" id="books">
+                    <h3 style="text-align:center;">Our Most Famous Books:</h3>
+                </div>
+                <div class="row">
+
+                    {% for book in books %}
+                    <div class="col-sm-3" style="margin-bottom: 30px; box-shadow:hsl(0, 0%, 80%) 0 0 6px; border-radius:10px;">
+                        <img class="thumbnail" src={{book.imageURL}} alt="Product Image">
+                        <div class="box-element product">
+                            <h6><strong>{{book.name}}</strong></h6>
+                            <hr>    
+                            <button data-product="{{book.id}}" data-action="add" class="btn btn-outline-secondary add-btn update-cart">Add to Cart</button>
+                            <h4 style="display: inline-block; float:right;"><strong>Rs.{{book.price}}</strong></h4>
+                        </div>
+                    </div>
+                    {% endfor %}
+
+                </div>
+                <br><br>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="{% static 'js/cart2.js' %}"></script>
+</body>
+</html>

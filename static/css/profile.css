@@ -1,0 +1,53 @@
+body{
+    background-color: #f5c6e9;
+    
+}
+*:focus{
+    outline:none;
+}
+.ubox{
+    box-sizing:border-box;
+    width: 360px;
+    height:400px;
+    border:2px solid #6e96be;
+    box-shadow: -3px -3px 7px #ffffff73;
+    border-radius:5px;
+    background-color:black;
+    margin-top:50px auto;
+    margin-bottom: 50px auto;
+    overflow:hidden;
+    
+}
+.uprofile{
+    box-sizing: border-box;
+    width:149px; 
+    height:149px;
+    border-radius: 50%;
+    margin:0;
+    border: 5px solid #0082e6;
+    padding:3px;
+    background-color: white;
+
+}
+.username,
+.email,
+.name,
+.gender{
+    display:block;
+    box-sizing: border-box;
+    background: none;
+    color: #3498db;
+    margin-bottom: 30px;
+    padding: 4px;
+    width: 100%;
+    height: 32px;
+    border:none;
+    border-bottom: 1px solid #0082e6;
+    font-family:'Roboto',sans-serif ;
+    font-weight: 400;
+    font-size: 15px;
+    transition:0.2s ease;
+}
+
+
+

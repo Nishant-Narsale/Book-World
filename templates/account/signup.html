@@ -1,0 +1,47 @@
+{% extends 'layout.html' %}
+{% load static %}
+{% load socialaccount %}
+{% block cssfilename %}
+<link rel="stylesheet" href="{% static 'css/ustyle.css' %}">
+<link rel="stylesheet" href="{% static 'css/register.css' %}">
+{% endblock cssfilename %}
+{% block title %}
+Book World | Register
+{% endblock title %}
+{% block body %}
+{% block login_body %}
+  <form action="{% url 'accounts:register' %}" method="POST">
+    {% csrf_token %}
+    <div class="dummy">
+      <h1>BOOK <span id="title">WORLD</span></h1>
+      <h2>Register</h2>
+      <hr>
+      {% for message in messages %}
+        <h5 style="color: red; text-align:center;">{{message}}</h5>
+      {% endfor %}
+      <label for="username"><b>Username</b></label>
+      <input type="text" placeholder="Enter Username" name="username" id="username" required>
+
+      <label for="email"><b>Email</b></label>
+      <input type="email" placeholder="Enter Email" name="email" id="email" required>
+  
+      <label for="psw"><b>Password</b></label>
+      <input type="password" placeholder="Enter Password" name="password1" id="psw" required>
+  
+      <label for="psw-repeat"><b>Repeat Password</b></label>
+      <input type="password" placeholder="Repeat Password" name="password2" id="psw-repeat" required>
+      <hr>
+  
+      <p>By creating an account you agree to our <a href="#">Terms & Privacy</a>.</p>
+      <button type="submit" class="registerbtn">Register</button>
+      <br>
+      <a href="{% provider_login_url 'google' %}" class="btn btn-danger google_auth" role="button">Login/Register with Google</a>
+    </div>
+
+    <div class="dummy signin">
+      <p>Already have an account? <a href="{% url 'accounts:login' %}">Sign in</a>.</p>
+    </div>
+    <br><br>
+  </form>
+  {% endblock %}
+{% endblock body %}

@@ -1,0 +1,31 @@
+{% extends "layout.html" %}
+{% load static %}
+
+{% block title %}
+Categories
+{% endblock title %}
+
+{% block body %}
+<div class="row">
+    <h2 style="text-align: center;">{{category_name}}</h2>
+    <br><br><br><hr>
+</div>
+<div class="row">
+    {% for book in books %}
+    <div class="col-sm-3" style="margin-bottom: 30px; box-shadow:hsl(0, 0%, 80%) 0 0 6px; border-radius:10px;">
+        <img class="thumbnail" src={{book.imageURL}} alt="Product Image">
+        <div class="box-element product">
+            <h6><strong>{{book.name}}</strong></h6>
+            <hr>
+            <button data-product="{{book.id}}" data-action="add" class="btn btn-outline-secondary add-btn update-cart">Add to Cart</button>
+            <h4 style="display: inline-block; float:right;"><strong>Rs.{{book.price}}</strong></h4>
+        </div>
+    </div>
+    
+    {% endfor %}
+    <br><br><br>
+</div>
+<br><br><hr>
+
+<script type="text/javascript" src="{% static 'js/cart2.js' %}"></script>
+{% endblock body %}

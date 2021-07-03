@@ -1,0 +1,38 @@
+{% extends 'layout.html' %}
+{% load static %}
+
+{% block cssfilename %}
+<link rel="stylesheet" href="{% static 'css/about.css' %}">
+{% endblock cssfilename %}
+
+{% block title %}
+BOOK WORLD | About Us
+{% endblock title %}
+
+{% block body %}
+    <header>
+    <div class="uheader">
+        <div class="ucontainer">
+            <div class="unavbar">
+                
+            </div>
+            <div class="urow"></div>
+            <div class="ucol-2"></div>
+            <h1>A BOOK WORLD</h1>
+            <p>Ye Hai Hamari Apni Kitab Ki Duniya!</p>
+           
+            <div class="ucol-2"></div>
+            <img src="{% static 'images/bookstore2.jpeg' %}" alt="">
+            
+        </div>
+    </div>
+    </header>
+    <h1 class="uabout">About</h1>
+    <ol>
+        <li class="li"><h3> Sellers can upload their books and sell book for cost which is chosen by seller itself.</h3></li>
+        <li class="li"><h3> Buyer can find their required book as per availability.</h3></li>
+        <li class="li"><h3> In this website seller must put their address while uploading books.</h3></li>
+        <li class="li"><h3> For communication between buyer and seller must provide valid email id and mobile number.</h3></li>
+        <li class="li"><h3> Seller will also be able to donate used books.</h3></li>
+    </ol>
+{% endblock body %}
