@@ -17,7 +17,7 @@ Book World | Sell your book online
   
     <div class="ucontainer">
         <form action="#">
-            
+            {% csrf_token %}
             <input type="text" id="input" name="" placeholder="Name">
             <input type="email" id="input" name="" placeholder="Email Id">
             <input type="text" id="input" name="" placeholder="Mobile no">
