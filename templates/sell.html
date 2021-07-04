@@ -16,13 +16,15 @@ Book World | Sell your book online
     <p>Ye Hai Hamari Apni Kitab Ki Duniya!</p>
   
     <div class="ucontainer">
-        
-        <input type="text" id="input" name="" placeholder="Name">
-        <input type="email" id="input" name="" placeholder="Email Id">
-        <input type="text" id="input" name="" placeholder="Mobile no">
-        <input type="text" id="input" name="" placeholder="Address">
-        <input type="file" id="input" name="" placeholder="Upload your book">
-        <input type="submit">
+        <form action="#">
+            {% csrftoken %}
+            <input type="text" id="input" name="" placeholder="Name">
+            <input type="email" id="input" name="" placeholder="Email Id">
+            <input type="text" id="input" name="" placeholder="Mobile no">
+            <input type="text" id="input" name="" placeholder="Address">
+            <input type="file" id="input" name="" placeholder="Upload your book">
+            <input type="submit">
+        </form>
     </div>
     <br><br><br><br>
 
