@@ -34,10 +34,11 @@ function updateUserCart(productId,action){
     })
 
     .then((response) => {
+        location.reload()
         return response.json()
     })
 
     .then((data) => {
         console.log('data:',data)
-    })
+    })  
 }
