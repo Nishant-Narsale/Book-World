@@ -12,4 +12,4 @@ urlpatterns = [
     path('about/',views.about, name="about"),
     path('updateItem/', views.updateItem, name="updateItem"),
     path('sell_book/', views.sellItem, name="sellItem")
-] 
+]
